@@ -6,16 +6,40 @@
     <title>Práctica web — Informática III</title>
   </head>
   <body class="bg-gray-100 text-gray-800">
-
-    <!-- PARTE A: comprobación de Tailwind.
-         Si esta barra se ve azul con texto blanco, Tailwind está funcionando.
-         Bórrala cuando termines la Parte A. -->
-    <div class="bg-blue-600 text-white text-center p-4 font-semibold">
-      ✅ Si ves esta barra azul, Tailwind está funcionando
-    </div>
-
     <!-- EJERCICIO 1: construye aquí tu página (header, main con #catalogo, footer).
          Las instrucciones están en el README. -->
+         <header class="bg-blue-600 text-white p-6 text-center">
+  <h1 class="text-3xl font-bold">Accesorios Movika</h1>
+  <p class="text-lg">"Momentos que brillan"</p>
+</header>
+
+<main class="p-4">
+  <div id="catalogo" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-xl font-semibold">Collares</h2>
+      <p class="text-gray-600">$500</p>
+      <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Agregar</button>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-xl font-semibold">Aretes</h2>
+      <p class="text-gray-600">$1500</p>
+      <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Agregar</button>
+    </div>
+
+    <div class="bg-white rounded-lg shadow p-4">
+      <h2 class="text-xl font-semibold">Pulseras</h2>
+      <p class="text-gray-600">$150</p>
+      <button class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Agregar</button>
+    </div>
+
+  </div>
+</main>
+
+<footer class="p-4 text-center text-sm text-gray-500">
+  Equipo: Bombastic
+</footer>
 
     <script type="module" src="/src/main.js"></script>
   </body>
