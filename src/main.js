@@ -72,3 +72,24 @@ document.getElementById('btn-vaciar').addEventListener('click', () => {
 // ------------------------------------------------------------
 
 // Escribe aquí tu código del Ejercicio 4
+const filtros = document.getElementById('filtros');
+
+filtros.addEventListener('click', (evento) => {
+  const boton = evento.target.closest('button[data-categoria]');
+  if (!boton) return;
+
+  const categoria = boton.dataset.categoria;
+
+  if (categoria === 'todos') {
+    mostrarProductos(productos);
+  } else {
+    mostrarProductos(productos.filter(p => p.categoria === categoria));
+  }
+
+  filtros.querySelectorAll('button').forEach(b => {
+    b.classList.remove('bg-blue-600', 'text-white');
+    b.classList.add('bg-white', 'text-gray-800', 'shadow');
+  });
+  boton.classList.remove('bg-white', 'text-gray-800', 'shadow');
+  boton.classList.add('bg-blue-600', 'text-white');
+});
