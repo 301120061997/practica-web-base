@@ -40,7 +40,31 @@ mostrarProductos(productos)
 const pedido = []
 
 // Escribe aquí tu código del Ejercicio 3
+catalogo.addEventListener('click', (evento) => {
+  const boton = evento.target.closest('button[data-id]');
+  if (!boton) return;
+  const id = Number(boton.dataset.id);
+  const producto = productos.find(p => p.id === id);
+  pedido.push(producto);
+  mostrarPedido();
+});
 
+function mostrarPedido() {
+  const listaPedido = document.getElementById('lista-pedido');
+  const total = document.getElementById('total');
+
+  listaPedido.innerHTML = pedido.map(p => `
+    <li>${p.nombre} - $${p.precio}</li>
+  `).join('');
+
+  const suma = pedido.reduce((suma, p) => suma + p.precio, 0);
+  total.textContent = `Total: $${suma}`;
+}
+
+document.getElementById('btn-vaciar').addEventListener('click', () => {
+  pedido.length = 0;
+  mostrarPedido();
+});
 // ------------------------------------------------------------
 // EJERCICIO 4 — Filtrar por categoría
 // Botones de categoría que llamen a mostrarProductos() con
