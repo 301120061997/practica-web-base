@@ -5,10 +5,10 @@
 // Cada objeto necesita: id (número único), nombre, precio y categoria.
 
 export const productos = [
-  { id: 1, nombre: 'Cuaderno profesional',   precio: 45,  categoria: 'Papelería' },
-  { id: 2, nombre: 'Caja de lápices HB',     precio: 60,  categoria: 'Papelería' },
-  { id: 3, nombre: 'Mochila escolar',        precio: 350, categoria: 'Accesorios' },
-  { id: 4, nombre: 'Termo de 600 ml',        precio: 180, categoria: 'Accesorios' },
-  { id: 5, nombre: 'Calculadora científica', precio: 220, categoria: 'Tecnología' },
-  { id: 6, nombre: 'Memoria USB 64 GB',      precio: 130, categoria: 'Tecnología' },
+  { id: 1, nombre: 'Collares',   precio: 500,  categoria: 'Collares' },
+  { id: 2, nombre: 'Aretes',     precio: 1500,  categoria: 'Aretes' },
+  { id: 3, nombre: 'Pulseras',        precio: 150, categoria: 'Pulseras' },
+  { id: 4, nombre: 'Collar dorado',        precio: 250, categoria: 'Collares' },
+  { id: 5, nombre: 'Aretes de Plata', precio: 679, categoria: 'Aretes' },
+  { id: 6, nombre: 'Pulsera de perla',      precio: 873, categoria: 'Pulseras' },
 ]
