@@ -93,3 +93,63 @@ filtros.addEventListener('click', (evento) => {
   boton.classList.remove('bg-white', 'text-gray-800', 'shadow');
   boton.classList.add('bg-blue-600', 'text-white');
 });
+// ------------------------------------------------------------
+// EJERCICIO 5 — Datos del cliente con validación
+// ------------------------------------------------------------
+const formulario = document.getElementById('form-cliente');
+
+function mostrarError(campo, mensaje) {
+  const error = document.getElementById(`error-${campo}`);
+  error.textContent = mensaje;
+  error.classList.remove('hidden');
+  const input = document.getElementById(campo);
+  if (input) input.classList.add('border-red-500');
+}
+
+function quitarError(campo) {
+  const error = document.getElementById(`error-${campo}`);
+  error.classList.add('hidden');
+  const input = document.getElementById(campo);
+  if (input) input.classList.remove('border-red-500');
+}
+
+formulario.addEventListener('submit', (evento) => {
+  evento.preventDefault();
+
+  const nombre = document.getElementById('nombre').value.trim();
+  const telefono = document.getElementById('telefono').value.trim();
+  const correo = document.getElementById('correo').value.trim();
+  let valido = true;
+
+  if (nombre === '') {
+    mostrarError('nombre', 'Escribe tu nombre.');
+    valido = false;
+  } else {
+    quitarError('nombre');
+  }
+
+  if (!/^\d{10}$/.test(telefono)) {
+    mostrarError('telefono', 'El teléfono debe tener exactamente 10 dígitos.');
+    valido = false;
+  } else {
+    quitarError('telefono');
+  }
+
+  if (!/^\S+@\S+\.\S+$/.test(correo)) {
+    mostrarError('correo', 'Escribe un correo válido (ejemplo: nombre@correo.com).');
+    valido = false;
+  } else {
+    quitarError('correo');
+  }
+
+  if (pedido.length === 0) {
+    mostrarError('pedido', 'Agrega al menos un producto a tu pedido.');
+    valido = false;
+  } else {
+    quitarError('pedido');
+  }
+
+  if (!valido) return;
+
+  
+});

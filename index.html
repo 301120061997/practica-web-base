@@ -30,6 +30,31 @@
   <h2 class="text-xl font-bold mb-2">Mi pedido</h2>
   <ul id="lista-pedido" class="mb-4"></ul>
   <p id="total" class="font-semibold">Total: $0</p>
+  <form id="form-cliente" class="mt-4 space-y-3" novalidate>
+  <div>
+    <label for="nombre" class="block text-sm font-medium">Nombre</label>
+    <input id="nombre" type="text" class="w-full border rounded p-2">
+    <p id="error-nombre" class="text-sm text-red-600 hidden"></p>
+  </div>
+
+  <div>
+    <label for="telefono" class="block text-sm font-medium">Teléfono</label>
+    <input id="telefono" type="text" class="w-full border rounded p-2">
+    <p id="error-telefono" class="text-sm text-red-600 hidden"></p>
+  </div>
+
+  <div>
+    <label for="correo" class="block text-sm font-medium">Correo</label>
+    <input id="correo" type="text" class="w-full border rounded p-2">
+    <p id="error-correo" class="text-sm text-red-600 hidden"></p>
+  </div>
+
+  <p id="error-pedido" class="text-sm text-red-600 hidden"></p>
+
+  <button type="submit" class="w-full bg-blue-600 text-white rounded p-2">
+    Confirmar pedido
+  </button>
+</form>
   <button id="btn-vaciar" class="mt-2 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded">Vaciar pedido</button>
 </aside>
 <footer class="p-4 text-center text-sm text-gray-500">
