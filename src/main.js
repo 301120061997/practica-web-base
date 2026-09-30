@@ -151,5 +151,70 @@ formulario.addEventListener('submit', (evento) => {
 
   if (!valido) return;
 
-  
+  const total = pedido.reduce((suma, p) => suma + p.precio, 0);
+
+  pedidosRegistrados.push({
+    id: Date.now(),
+    cliente: { nombre, telefono, correo },
+    productos: [...pedido],
+    total,
+    estado: 'Pendiente'
+  });
+  guardarPedidos();
+
+  pedido.length = 0;
+  formulario.reset();
+  mostrarPedido();
+  mostrarPedidosRegistrados();
 });
+// ------------------------------------------------------------
+// EJERCICIO 6 — Pedidos registrados con estado
+// ------------------------------------------------------------
+const pedidosRegistrados = JSON.parse(localStorage.getItem('pedidosRegistrados')) || [];
+
+function guardarPedidos() {
+  localStorage.setItem('pedidosRegistrados', JSON.stringify(pedidosRegistrados));
+}
+
+const ESTADOS = ['Pendiente', 'En preparación', 'Entregado'];
+const COLORES = {
+  'Pendiente': 'bg-yellow-100 border-yellow-400',
+  'En preparación': 'bg-blue-100 border-blue-400',
+  'Entregado': 'bg-green-100 border-green-400'
+};
+
+const contenedorPedidos = document.getElementById('pedidos-registrados');
+
+function mostrarPedidosRegistrados() {
+  contenedorPedidos.innerHTML = pedidosRegistrados.map(p => `
+    <article class="rounded-lg border-2 p-4 ${COLORES[p.estado]}">
+      <h3 class="text-lg font-semibold">${p.cliente.nombre}</h3>
+      <ul class="my-2 list-disc list-inside">
+        ${p.productos.map(pr => `<li>${pr.nombre} - $${pr.precio}</li>`).join('')}
+      </ul>
+      <p class="font-semibold">Total: $${p.total}</p>
+      <p class="text-sm">Estado: <span class="font-bold">${p.estado}</span></p>
+      ${p.estado !== 'Entregado'
+        ? `<button data-avanzar="${p.id}" class="mt-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Avanzar estado</button>`
+        : ''}
+    </article>
+  `).join('');
+}
+
+contenedorPedidos.addEventListener('click', (evento) => {
+  const boton = evento.target.closest('button[data-avanzar]');
+  if (!boton) return;
+
+  const idPedido = Number(boton.dataset.avanzar);
+  const pedidoActual = pedidosRegistrados.find(p => p.id === idPedido);
+
+  const indiceActual = ESTADOS.indexOf(pedidoActual.estado);
+
+  if (indiceActual < ESTADOS.length - 1) {
+    pedidoActual.estado = ESTADOS[indiceActual + 1];
+  }
+  guardarPedidos();
+  mostrarPedidosRegistrados();
+});
+
+mostrarPedidosRegistrados();
